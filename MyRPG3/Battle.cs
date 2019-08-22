@@ -107,7 +107,7 @@ namespace MyRPG3
                     }
                 }
                 amonsterleft = BattleHelper.CheckMonsters(monsters);
-                Console.WriteLine("Press enter to continue.....");
+                Console.WriteLine("Press enter to continue...");
                 Console.ReadLine();
                 Console.Clear();
             }
