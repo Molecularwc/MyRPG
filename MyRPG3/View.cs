@@ -1,0 +1,39 @@
+﻿using System;
+
+namespace MyRPG3
+{
+    public class View
+    {
+        public static void PrintStats(Hero hero)
+        {
+            hero.XpToLevel = hero.XpThresh - hero.CurrentXP;
+            Console.Clear();
+            Console.Write(@"
+Name:{0}
+Hitpoints: {1}/{2}
+Strength: {3}
+Agility: {4}
+Intelligence: {5}
+Defense: {6}
+Attack: {7}
+Experience: {8}/{9}
+Exp to level: {10}
+Total Experience: {11}
+Gold: {12}
+Level: {13}
+Magic: {14}/{15}
+Potions: {16}
+Items:", hero.Identifier, hero.CurrentHealth, hero.MaxHealth, hero.Strength, hero.Agility, hero.Intelligence,
+         hero.Defense, hero.AttackDamage, $"{hero.CurrentXP:F0}", hero.XpThresh, hero.XpToLevel, $"{hero.Experience:F0}", $"{hero.Gold:F0}", hero.Level, hero.CurrentMagic, hero.MaxMagic, hero.PotionQty);
+            foreach (string item in hero.items)
+            {
+                Console.WriteLine();
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Press enter to continue....");
+            Console.ReadLine();
+            Console.Clear();
+        }
+    }
+}
