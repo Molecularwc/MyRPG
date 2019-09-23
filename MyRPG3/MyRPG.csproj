@@ -160,18 +160,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Barbarian_Loot_Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Barbarian_Loot_Admin.Designer.cs">
-      <DependentUpon>Barbarian_Loot_Admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Barbarian.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleHelper.cs" />
@@ -185,19 +173,8 @@
     <Compile Include="Inn.cs" />
     <Compile Include="Invincibility.cs" />
     <Compile Include="LightningBolt.cs" />
-    <Compile Include="loot.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>loot.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Loot_Handler.cs" />
     <Compile Include="Mage.cs" />
-    <Compile Include="Mage_Loot_Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mage_Loot_Admin.Designer.cs">
-      <DependentUpon>Mage_Loot_Admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainGame.cs" />
     <Compile Include="Potions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -213,29 +190,12 @@
     </Compile>
     <Compile Include="RestoreHP.cs" />
     <Compile Include="Slime.cs" />
-    <Compile Include="Slime_Loot_Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Slime_Loot_Admin.Designer.cs">
-      <DependentUpon>Slime_Loot_Admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Spell.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="loot.xsc">
-      <DependentUpon>loot.xsd</DependentUpon>
-    </None>
-    <EmbeddedResource Include="loot.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>loot.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="loot.xss">
-      <DependentUpon>loot.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -243,29 +203,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Barbarian_Loot_Admin.resx">
-      <DependentUpon>Barbarian_Loot_Admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loot_Drops.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <Content Include="Loot_Drops_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Loot_Drops.mdf</DependentUpon>
-    </Content>
     <Content Include="Recluse1.ico" />
-    <EmbeddedResource Include="Mage_Loot_Admin.resx">
-      <DependentUpon>Mage_Loot_Admin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Slime_Loot_Admin.resx">
-      <DependentUpon>Slime_Loot_Admin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
