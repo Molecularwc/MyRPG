@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class Barbarian : Character
     {
@@ -21,16 +21,16 @@ namespace MyRPG3
             Experience = 35;
             Gold = 25;
             PotionQty = 0;
-            xpMod = 1.5;
-            goldMod = 225;
+            XpMod = 1.5;
+            GoldMod = 225;
             Level = 1;
 
             Identifier = "Barbarian";
-            isAlive = true;
+            IsAlive = true;
             AttackDamage = Strength;
         }
 
-        public override string AI()
+        public override string Ai()
         {
             string choice;
             int ainumberchoice;

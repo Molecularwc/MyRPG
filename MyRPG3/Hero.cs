@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MyRPG3
+namespace MyRPG
 {
     public class Hero : Character
     {
-        public List<string> items;
+        public List<string> Items;
 
         public Hero()
         {
-            items = new List<string>();
+            Items = new List<string>();
         }
 
         public static void Initialize(Hero hero)
@@ -22,20 +22,20 @@ namespace MyRPG3
             hero.Defense = 12;
             hero.Agility = 24;
             hero.Intelligence = 18;
-            hero.increaseAttack = true;
+            hero.IncreaseAttack = true;
             hero.Level = 1;
             hero.XpThresh = (hero.Level * 500) * 1.5;
             hero.Experience = 0;
-            hero.CurrentXP = 0;
-            hero.XpToLevel = hero.XpThresh - hero.CurrentXP;
+            hero.CurrentXp = 0;
+            hero.XpToLevel = hero.XpThresh - hero.CurrentXp;
             hero.Gold = 0;
             hero.PotionQty = 0;
-            hero.defenseMod = false;
-            hero.newHP = 0;
-            hero.oldHP = 0;
-            hero.newMaxHP = 0;
-            hero.oldMaxHP = 0;
-            hero.statIncrease = false;
+            hero.DefenseMod = false;
+            hero.NewHp = 0;
+            hero.OldHp = 0;
+            hero.NewMaxHp = 0;
+            hero.OldMaxHp = 0;
+            hero.StatIncrease = false;
 
             while (hero.Identifier == null || hero.Identifier == "" ||
                 hero.Identifier == " ")
@@ -43,13 +43,13 @@ namespace MyRPG3
                 Console.WriteLine("What is your Hero's name?");
                 hero.Identifier = Console.ReadLine();
             }
-            hero.isAlive = true;
+            hero.IsAlive = true;
             hero.AttackDamage = (hero.Strength * 10) / 2;
         }
 
         public bool CheckItems(string item)
         {
-            if (items.Contains(item))
+            if (Items.Contains(item))
             {
                 return true;
             }

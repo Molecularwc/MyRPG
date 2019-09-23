@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace MyRPG3
+namespace MyRPG
 {
     public class DataHandler
     {
@@ -29,7 +29,7 @@ namespace MyRPG3
                     hero.Agility = int.Parse(file.ReadLine());
                     hero.Intelligence = int.Parse(file.ReadLine());
                     hero.Experience = int.Parse(file.ReadLine());
-                    hero.CurrentXP = int.Parse(file.ReadLine());
+                    hero.CurrentXp = int.Parse(file.ReadLine());
                     hero.XpThresh = int.Parse(file.ReadLine());
                     hero.XpToLevel = int.Parse(file.ReadLine());
                     hero.Gold = int.Parse(file.ReadLine());
@@ -41,7 +41,7 @@ namespace MyRPG3
                         item = file.ReadLine();
                         if (item != null)
                         {
-                            hero.items.Add(item);
+                            hero.Items.Add(item);
                         }
                         else
                         {
@@ -82,14 +82,14 @@ namespace MyRPG3
             file.WriteLine(hero.Agility);
             file.WriteLine(hero.Intelligence);
             file.WriteLine($"{hero.Experience:F0}");
-            file.WriteLine($"{hero.CurrentXP:F0}");
+            file.WriteLine($"{hero.CurrentXp:F0}");
             file.WriteLine(hero.XpThresh);
             file.WriteLine(hero.XpToLevel);
             file.WriteLine($"{hero.Gold:F0}");
             file.WriteLine(hero.Level);
             file.WriteLine(hero.AttackDamage);
             file.WriteLine(hero.PotionQty);
-            foreach (string item in hero.items)
+            foreach (string item in hero.Items)
             {
                 file.WriteLine(item);
             }

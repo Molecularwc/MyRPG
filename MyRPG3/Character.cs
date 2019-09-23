@@ -1,50 +1,50 @@
 ﻿using System;
 
-namespace MyRPG3
+namespace MyRPG
 {
     public class Character
     {
         public int AttackDamage;
-        public int CurrentHealth, MaxHealth, Level, newHP, oldHP, newMaxHP, oldMaxHP;
+        public int CurrentHealth, MaxHealth, Level, NewHp, OldHp, NewMaxHp, OldMaxHp;
         public double CurrentMagic;
-        public bool defending, increaseAttack;
-        public bool defenseMod;
-        public double Experience, Gold, XpToLevel, XpThresh, CurrentXP;
-        public bool fled;
+        public bool Defending, IncreaseAttack;
+        public bool DefenseMod;
+        public double Experience, Gold, XpToLevel, XpThresh, CurrentXp;
+        public bool Fled;
         public string Identifier;
-        public bool isAlive;
+        public bool IsAlive;
         public int MaxMagic, Strength, Defense, Agility, Intelligence;
         public int PotionQty;
-        public bool statIncrease;
-        public double xpMod, goldMod;
+        public bool StatIncrease;
+        public double XpMod, GoldMod;
         protected double AiAttack, AiDefend, AiSpell;
         protected Random rand;
-        protected double spellOne, spellTwo, spellThree;
+        protected double SpellOne, SpellTwo, SpellThree;
 
         public Character()
         {
-            spellOne = 0;
-            spellTwo = 0;
-            spellThree = 0;
-            defending = false;
-            increaseAttack = false;
-            fled = false;
-            defenseMod = false;
+            SpellOne = 0;
+            SpellTwo = 0;
+            SpellThree = 0;
+            Defending = false;
+            IncreaseAttack = false;
+            Fled = false;
+            DefenseMod = false;
         }
 
-        public virtual string AI()
+        public virtual string Ai()
         {
             string choice = "";
             return choice;
         }
 
-        public virtual string PotionAI()
+        public virtual string PotionAi()
         {
             string choice = "";
             return choice;
         }
 
-        public virtual string SpellAI()
+        public virtual string SpellAi()
         {
             string choice = "";
             return choice;

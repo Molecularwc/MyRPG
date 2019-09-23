@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyRPG3
+namespace MyRPG
 {
     /// <summary>
     /// This is a very simple store with just a few items. We could alternatively make each item it's
@@ -56,7 +56,7 @@ namespace MyRPG3
                             if (hero.Gold >= 100)
                             {
                                 hero.Gold -= 100;
-                                hero.items.Add(sword);
+                                hero.Items.Add(sword);
                                 hero.AttackDamage += 5;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -80,7 +80,7 @@ namespace MyRPG3
                             if (hero.Gold >= 130)
                             {
                                 hero.Gold -= 130;
-                                hero.items.Add(helmet);
+                                hero.Items.Add(helmet);
                                 hero.Defense += 10;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -104,7 +104,7 @@ namespace MyRPG3
                             if (hero.Gold >= 125)
                             {
                                 hero.Gold -= 125;
-                                hero.items.Add(armor);
+                                hero.Items.Add(armor);
                                 hero.Defense += 15;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -128,7 +128,7 @@ namespace MyRPG3
                             if (hero.Gold >= 115)
                             {
                                 hero.Gold -= 115;
-                                hero.items.Add(mace);
+                                hero.Items.Add(mace);
                                 hero.AttackDamage += 8;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -152,7 +152,7 @@ namespace MyRPG3
                             if (hero.Gold >= 200)
                             {
                                 hero.Gold -= 200;
-                                hero.items.Add(battleaxe);
+                                hero.Items.Add(battleaxe);
                                 hero.AttackDamage += 10;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -176,7 +176,7 @@ namespace MyRPG3
                             if (hero.Gold >= 200)
                             {
                                 hero.Gold -= 200;
-                                hero.items.Add(paladinshield);
+                                hero.Items.Add(paladinshield);
                                 hero.Defense += 15;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -200,7 +200,7 @@ namespace MyRPG3
                             if (hero.Gold >= 175)
                             {
                                 hero.Gold -= 175;
-                                hero.items.Add(cloak);
+                                hero.Items.Add(cloak);
                                 hero.Intelligence += 10;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");

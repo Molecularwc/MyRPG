@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class Slime : Character
     {
         public Slime()
-        {//Truth be told the slime was our original monster
+        {
             AiAttack = 70;
             AiDefend = 75;
             AiSpell = 0;
@@ -21,16 +21,16 @@ namespace MyRPG3
             Experience = 15;
             Gold = 10;
             PotionQty = 0;
-            xpMod = 1.5;
-            goldMod = 50;
+            XpMod = 1.5;
+            GoldMod = 50;
             Level = 1;
 
             Identifier = "Slime";
-            isAlive = true;
+            IsAlive = true;
             AttackDamage = Strength;
         }
 
-        public override string AI()
+        public override string Ai()
         {
             string choice;
             int ainumberchoice;

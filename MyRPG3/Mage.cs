@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class Mage : Character
     {
@@ -10,9 +10,9 @@ namespace MyRPG3
             AiDefend = 65;
             AiSpell = 95;
 
-            spellOne = 35;
-            spellTwo = 75;
-            spellThree = 90;
+            SpellOne = 35;
+            SpellTwo = 75;
+            SpellThree = 90;
 
             CurrentHealth = 18;
             MaxHealth = 18;
@@ -25,16 +25,16 @@ namespace MyRPG3
             Experience = 25;
             Gold = 20;
             PotionQty = 0;
-            xpMod = 1.5;
-            goldMod = 150;
+            XpMod = 1.5;
+            GoldMod = 150;
             Level = 1;
 
             Identifier = "Mage";
-            isAlive = true;
+            IsAlive = true;
             AttackDamage = Strength;
         }
 
-        public override string AI()
+        public override string Ai()
         {
             string choice;
             int ainumberchoice;
@@ -59,26 +59,26 @@ namespace MyRPG3
             return choice;
         }
 
-        public override string SpellAI()
+        public override string SpellAi()
         {
             if (CurrentHealth < (CurrentHealth / 2))
             {//here we're giving the mage a bit of common sense to heal
-                spellOne /= 2;
-                spellTwo /= 2;
+                SpellOne /= 2;
+                SpellTwo /= 2;
             }
             string choice;
             int ainumberchoice;
             rand = new Random();
             ainumberchoice = rand.Next(1, 100);
-            if (ainumberchoice < spellOne)
+            if (ainumberchoice < SpellOne)
             {
                 choice = "F";
             }
-            else if (ainumberchoice <= spellTwo && ainumberchoice >= spellOne)
+            else if (ainumberchoice <= SpellTwo && ainumberchoice >= SpellOne)
             {
                 choice = "I";
             }
-            else if (ainumberchoice <= spellThree && ainumberchoice >= spellTwo)
+            else if (ainumberchoice <= SpellThree && ainumberchoice >= SpellTwo)
             {
                 choice = "L";
             }

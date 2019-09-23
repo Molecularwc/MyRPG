@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class Battle
     {
@@ -34,7 +34,7 @@ namespace MyRPG3
                 BattleHelper.PrintStatus(hero);
                 foreach (Character monster in monsters)
                 {
-                    if (monster.isAlive)
+                    if (monster.IsAlive)
                     {
                         if (hero.Level > monster.Level)
                         {
@@ -48,19 +48,19 @@ namespace MyRPG3
                             monster.Agility = (monster.Agility * 3) / 2;
                             monster.Intelligence = (monster.Intelligence * 3) / 2;
                             monster.AttackDamage = monster.Strength;
-                            monster.Experience = (monster.Experience * (hero.Level * 2)) * monster.xpMod;
+                            monster.Experience = (monster.Experience * (hero.Level * 2)) * monster.XpMod;
                             monster.Gold = (monster.Gold * (hero.Level * 2)) * 1.5;
                         }
                         BattleHelper.PrintStatus(monster);
-                        if (rnds >= 3 && hero.defenseMod == true)
+                        if (rnds >= 3 && hero.DefenseMod == true)
                         {
-                            hero.defenseMod = false;
+                            hero.DefenseMod = false;
                         }
-                        if (rnds >= 4 && hero.statIncrease == true)
+                        if (rnds >= 4 && hero.StatIncrease == true)
                         {
-                            hero.CurrentHealth = hero.oldHP;
-                            hero.MaxHealth = hero.oldMaxHP;
-                            hero.statIncrease = false;
+                            hero.CurrentHealth = hero.OldHp;
+                            hero.MaxHealth = hero.OldMaxHp;
+                            hero.StatIncrease = false;
                         }
                     }
                 }
@@ -76,7 +76,7 @@ namespace MyRPG3
                 {
                     Console.WriteLine("You have fled");
                     Console.WriteLine("Press any key to continue");
-                    hero.fled = true;
+                    hero.Fled = true;
                     continue;
                 }
                 else if (userchoice == "p" || userchoice == "P")
@@ -89,18 +89,18 @@ namespace MyRPG3
                 foreach (Character monster in monsters)
                 {
                     bool v = BattleHelper.CheckHealth(monster.CurrentHealth);
-                    monster.isAlive = v;
-                    if (monster.isAlive == true)
+                    monster.IsAlive = v;
+                    if (monster.IsAlive == true)
                     {
-                        monsterchoice = monster.AI();
+                        monsterchoice = monster.Ai();
                         BattleHelper.CheckDefense(monsterchoice, monster);
                         if (monsterchoice == "S" || monsterchoice == "s")
                         {
-                            monsterspellchoice = monster.SpellAI();
+                            monsterspellchoice = monster.SpellAi();
                         }
                         else if (monsterchoice == "p" || monsterchoice == "P")
                         {
-                            monsterpotionchoice = monster.PotionAI();
+                            monsterpotionchoice = monster.PotionAi();
                         }
 
                         BattleHelper.ProcessChoice(monsterchoice, monster, hero, monsterspellchoice, monsterpotionchoice);
@@ -111,7 +111,7 @@ namespace MyRPG3
                 Console.ReadLine();
                 Console.Clear();
             }
-            while (hero.isAlive == true && amonsterleft == true);
+            while (hero.IsAlive == true && amonsterleft == true);
         }
     }
 }

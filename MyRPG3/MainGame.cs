@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class MainGame
     {
@@ -22,7 +22,7 @@ namespace MyRPG3
             Hero myhero;
             Console.WriteLine("Welcome to the arena!");
             myhero = new Hero();
-            begin:
+        begin:
             Hero.Initialize(myhero);
             if (myhero.Identifier == "Admin")
             {
@@ -169,7 +169,7 @@ _________________________");
 
                             continue;
                         }
-                        else if (myhero.fled == false)
+                        else if (myhero.Fled == false)
                         {
                             double gold = 0;
                             double experience = 0;
@@ -178,11 +178,11 @@ _________________________");
 
                             foreach (Character monster in Monster)
                             {
-                                monster.Experience += ((((myhero.Level * 2) * monster.xpMod) / 0.75 + 15) * monster.xpMod);
+                                monster.Experience += ((((myhero.Level * 2) * monster.XpMod) / 0.75 + 15) * monster.XpMod);
                                 curXP += monster.Experience;
-                                curGol += (monster.Gold * 1.5) + monster.goldMod;
+                                curGol += (monster.Gold * 1.5) + monster.GoldMod;
 
-                                if (monster.fled == false)
+                                if (monster.Fled == false)
                                 {
                                     experience = curXP;
                                     if (experience >= 25000)
@@ -204,11 +204,11 @@ _________________________");
 
                                 , myhero.Identifier, $"{gold:F0}", $"{experience:F0}");
                                 myhero.Experience += experience;
-                                myhero.CurrentXP += experience;
+                                myhero.CurrentXp += experience;
                                 myhero.Gold += gold;
                                 Monster.Clear();
 
-                                if (myhero.CurrentXP >= myhero.XpThresh)
+                                if (myhero.CurrentXp >= myhero.XpThresh)
                                 {
                                     do
                                     {
@@ -234,13 +234,13 @@ _________________________");
                                         {
                                             myhero.Agility = 950;
                                         }
-                                        myhero.CurrentXP -= myhero.XpThresh;
-                                        if (myhero.CurrentXP < 0)
+                                        myhero.CurrentXp -= myhero.XpThresh;
+                                        if (myhero.CurrentXp < 0)
                                         {
-                                            myhero.CurrentXP = 0;
+                                            myhero.CurrentXp = 0;
                                         }
                                         myhero.XpThresh = (myhero.Level * 500) * 1.5;
-                                        myhero.XpToLevel = myhero.XpThresh - myhero.CurrentXP;
+                                        myhero.XpToLevel = myhero.XpThresh - myhero.CurrentXp;
                                         myhero.CurrentHealth = myhero.MaxHealth;
                                         myhero.CurrentMagic = myhero.MaxMagic;
                                         myhero.Strength = ((myhero.Strength * 7) / 3) + 20;
@@ -256,7 +256,7 @@ _________________________");
                                         }
                                         Console.WriteLine("Experience until next level: {0}", myhero.XpToLevel);
                                     }
-                                    while (myhero.CurrentXP >= myhero.XpThresh);
+                                    while (myhero.CurrentXp >= myhero.XpThresh);
                                 }
                                 Console.WriteLine("Press enter to continue....");
                                 Console.ReadLine();
@@ -269,7 +269,7 @@ _________________________");
                                 Console.WriteLine("{0} gets {1} gold and 0 experience"
 
                                 , myhero.Identifier, $"{gold:F0}");
-                                myhero.CurrentXP = 0;
+                                myhero.CurrentXp = 0;
                                 myhero.Gold += gold;
                                 Monster.Clear();
 
@@ -279,7 +279,7 @@ _________________________");
                         }
                         else
                         {
-                            myhero.fled = false;
+                            myhero.Fled = false;
                         }
 
                         break;

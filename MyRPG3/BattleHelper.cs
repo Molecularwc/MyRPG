@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MyRPG3
+namespace MyRPG
 {
     /// <summary>
     /// A collection of static methods used in our battle loop
@@ -14,10 +14,10 @@ namespace MyRPG3
         #region CheckHealth
 
         /// <summary>
-        /// This method should be called for each character to determine if they are alive
-        /// A dead character should not be allowed to do any actions
+        /// This method should be called for each character to determine if they are alive A dead
+        /// character should not be allowed to do any actions
         /// </summary>
-        /// <param name="health"> the characters current health int</param>
+        /// <param name="health">the characters current health int</param>
         /// <returns>Returns if the character is alive</returns>
         public static bool CheckHealth(int health)
         {
@@ -38,8 +38,8 @@ namespace MyRPG3
         #region DealDamage
 
         /// <summary>
-        /// This method calculates the damage based on the attackers attack power
-        /// vs the defenders defense stat
+        /// This method calculates the damage based on the attackers attack power vs the defenders
+        /// defense stat
         /// </summary>
         /// <param name="attacker">The attacking character</param>
         /// <param name="defender">The defending character</param>
@@ -60,15 +60,15 @@ namespace MyRPG3
                 min = 1;
             }
             damage = rand.Next(min, max);
-            if (attacker.increaseAttack == true)
+            if (attacker.IncreaseAttack == true)
             {
                 damage = (int)(damage * 3) / 2;
             }
-            if (defender.defending == true)
+            if (defender.Defending == true)
             {
                 damage = damage / 2;
             }
-            if (defender.defenseMod == true)
+            if (defender.DefenseMod == true)
             {
                 damage = damage / 10;
             }
@@ -82,7 +82,7 @@ namespace MyRPG3
         /// <summary>
         /// This method is used to take the choice and determine the right action for it
         /// </summary>
-        /// <param name="choice"> the attackers choice</param>
+        /// <param name="choice">the attackers choice</param>
         /// <param name="attacker">The active character</param>
         /// <param name="defender">The target character the attacker is attacking</param>
         public static void ProcessChoice(string choice, Character attacker, Character defender, string spellchoice, string potionchoice)
@@ -109,8 +109,8 @@ namespace MyRPG3
                 case "f":
                     Console.WriteLine();
                     Console.WriteLine("{0} flees!", attacker.Identifier);
-                    attacker.fled = true;
-                    attacker.isAlive = false;
+                    attacker.Fled = true;
+                    attacker.IsAlive = false;
                     break;
 
                 case "S":
@@ -183,29 +183,28 @@ _____________________");
         #region CheckDefense
 
         /// <summary>
-        /// This method should be called for each active character.  This sets
-        /// the bools defending and increase attack for the character.
-        /// This method should be called prior to any processchoice.
+        /// This method should be called for each active character. This sets the bools defending and
+        /// increase attack for the character. This method should be called prior to any processchoice.
         /// </summary>
         /// <param name="choice">input the string choice to check for defense</param>
         /// <param name="attacker">input the active character we are checking</param>
         public static void CheckDefense(string choice, Character attacker)
         {
-            if (attacker.defending == true)
+            if (attacker.Defending == true)
             {
-                attacker.increaseAttack = true;
+                attacker.IncreaseAttack = true;
             }
             else
             {
-                attacker.increaseAttack = false;
+                attacker.IncreaseAttack = false;
             }
             if (choice == "D" || choice == "d")
             {
-                attacker.defending = true;
+                attacker.Defending = true;
             }
             else
             {
-                attacker.defending = false;
+                attacker.Defending = false;
             }
         }
 
@@ -330,24 +329,24 @@ Please choose a spell:
             int pot = potion.PotionUse(attacker);
             if (potion.restoreHP == true)
             {
-                attacker.newHP = attacker.CurrentHealth + pot;
-                attacker.oldHP = attacker.CurrentHealth;
-                attacker.CurrentHealth = attacker.newHP;
-                if (attacker.newHP > attacker.MaxHealth)
+                attacker.NewHp = attacker.CurrentHealth + pot;
+                attacker.OldHp = attacker.CurrentHealth;
+                attacker.CurrentHealth = attacker.NewHp;
+                if (attacker.NewHp > attacker.MaxHealth)
                 {
-                    attacker.newHP = attacker.MaxHealth;
+                    attacker.NewHp = attacker.MaxHealth;
                 }
             }
             else if (potion.increaseMaxHP == true && potion._isUsed == true)
             {
-                attacker.newMaxHP = attacker.MaxHealth + pot;
-                attacker.oldMaxHP = attacker.MaxHealth;
-                attacker.MaxHealth = attacker.newMaxHP;
-                attacker.statIncrease = true;
+                attacker.NewMaxHp = attacker.MaxHealth + pot;
+                attacker.OldMaxHp = attacker.MaxHealth;
+                attacker.MaxHealth = attacker.NewMaxHp;
+                attacker.StatIncrease = true;
             }
             if (potion.invincibility == true && potion._isUsed == true)
             {
-                attacker.defenseMod = true;
+                attacker.DefenseMod = true;
             }
         }
 
@@ -432,7 +431,7 @@ Increase (M)ax HP
             bool foundone = false;
             foreach (Character monster in Monsters)
             {
-                if (monster.isAlive)
+                if (monster.IsAlive)
                 {
                     foundone = true;
                 }
@@ -452,8 +451,8 @@ Increase (M)ax HP
         #region ChooseTarget
 
         /// <summary>
-        /// This method will print out the current monster with an index
-        /// so the attacker can choose which one to target.
+        /// This method will print out the current monster with an index so the attacker can choose
+        /// which one to target.
         /// </summary>
         /// <param name="Monster">This is the list of monsters</param>
         /// <returns>Returns an index of the character to attack</returns>
@@ -466,7 +465,7 @@ Increase (M)ax HP
             {
                 Hero myhero = new Hero();
                 x++;
-                if (monster.isAlive)
+                if (monster.IsAlive)
                 {
                     Console.WriteLine("{0}: {1}", x, monster.Identifier);
                 }
