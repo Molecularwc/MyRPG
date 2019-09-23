@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MyRPG
 {
@@ -18,22 +11,10 @@ namespace MyRPG
             Battle battle;
             List<Character> Monster;
             DataHandler data = new DataHandler();
-            Admin admin = new Admin();
             Hero myhero;
             Console.WriteLine("Welcome to the arena!");
             myhero = new Hero();
-        begin:
             Hero.Initialize(myhero);
-            if (myhero.Identifier == "Admin")
-            {
-                Application.EnableVisualStyles();
-                Application.Run(mainForm: new Admin());
-                if (admin.Visible == false)
-                {
-                    myhero.Identifier = " ";
-                }
-                goto begin;
-            }
             Monster = new List<Character>();
 
             do
@@ -70,53 +51,35 @@ F,S,I,V,L,A, or Q?");
 
                 Console.WriteLine();
 
-                switch (answer)
+                switch (answer.ToUpper())
                 {
                     case "L":
-
-                    case "l":
-
                         data.Load(myhero);
 
                         break;
 
                     case "A":
-
-                    case "a":
-
                         data.Save(myhero);
 
                         break;
 
                     case "S":
-
-                    case "s":
-
-                        Store store = new Store(myhero);
+                        var store = new Store(myhero);
 
                         break;
 
                     case "I":
-
-                    case "i":
-
                         Inn.Sleep(myhero);
 
                         break;
 
-                    case "v":
-
                     case "V":
-
                         View.PrintStats(myhero);
 
                         break;
 
                     case "F":
-
-                    case "f":
-
-                        string done = "";
+                        var done = "";
 
                         do
                         {
@@ -134,23 +97,25 @@ _________________________");
 
                             Console.WriteLine();
 
-                            string choice = Console.ReadLine();
+                            var choice = Console.ReadLine();
 
-                            if (choice == "S" || choice == "s")
+                            switch (choice)
                             {
-                                Monster.Add(new Slime());
-                            }
-                            else if (choice == "B" || choice == "b")
-                            {
-                                Monster.Add(new Barbarian());
-                            }
-                            else if (choice == "M" || choice == "m")
-                            {
-                                Monster.Add(new Mage());
-                            }
-                            else
-                            {
-                                Monster.Add(new Slime());
+                                case "S":
+                                    Monster.Add(new Slime());
+                                    break;
+
+                                case "B":
+                                    Monster.Add(new Barbarian());
+                                    break;
+
+                                case "M":
+                                    Monster.Add(new Mage());
+                                    break;
+
+                                default:
+                                    Monster.Add(new Slime());
+                                    break;
                             }
 
                             Console.WriteLine("Would you like to fight more monsters?");
@@ -173,18 +138,18 @@ _________________________");
                         {
                             double gold = 0;
                             double experience = 0;
-                            double curXP = 0;
+                            double curXp = 0;
                             double curGol = 0;
 
                             foreach (Character monster in Monster)
                             {
                                 monster.Experience += ((((myhero.Level * 2) * monster.XpMod) / 0.75 + 15) * monster.XpMod);
-                                curXP += monster.Experience;
+                                curXp += monster.Experience;
                                 curGol += (monster.Gold * 1.5) + monster.GoldMod;
 
                                 if (monster.Fled == false)
                                 {
-                                    experience = curXP;
+                                    experience = curXp;
                                     if (experience >= 25000)
                                     {
                                         experience = 25000;
@@ -208,55 +173,51 @@ _________________________");
                                 myhero.Gold += gold;
                                 Monster.Clear();
 
-                                if (myhero.CurrentXp >= myhero.XpThresh)
+                                while (myhero.CurrentXp >= myhero.XpThresh)
                                 {
-                                    do
+                                    Console.WriteLine("{0} is ready for the next level!", myhero.Identifier);
+                                    myhero.Level = myhero.Level + 1;
+                                    myhero.MaxHealth = (myhero.MaxHealth * 4) / 3;
+                                    if (myhero.MaxHealth > 100000)
                                     {
-                                        Console.WriteLine("{0} is ready for the next level!", myhero.Identifier);
-                                        myhero.Level = myhero.Level + 1;
-                                        myhero.MaxHealth = (myhero.MaxHealth * 4) / 3;
-                                        if (myhero.MaxHealth > 100000)
-                                        {
-                                            myhero.MaxHealth = 100000;
-                                        }
-                                        myhero.MaxMagic = (myhero.MaxMagic * 4) / 3;
-                                        if (myhero.MaxMagic > 15000)
-                                        {
-                                            myhero.MaxMagic = 15000;
-                                        }
-                                        myhero.Defense = ((myhero.Defense * 7) / 3) + 10;
-                                        if (myhero.Defense > 1300)
-                                        {
-                                            myhero.Defense = 1300;
-                                        }
-                                        myhero.Agility = ((myhero.Agility * 4) / 3) + 15;
-                                        if (myhero.Agility > 950)
-                                        {
-                                            myhero.Agility = 950;
-                                        }
-                                        myhero.CurrentXp -= myhero.XpThresh;
-                                        if (myhero.CurrentXp < 0)
-                                        {
-                                            myhero.CurrentXp = 0;
-                                        }
-                                        myhero.XpThresh = (myhero.Level * 500) * 1.5;
-                                        myhero.XpToLevel = myhero.XpThresh - myhero.CurrentXp;
-                                        myhero.CurrentHealth = myhero.MaxHealth;
-                                        myhero.CurrentMagic = myhero.MaxMagic;
-                                        myhero.Strength = ((myhero.Strength * 7) / 3) + 20;
-                                        if (myhero.Strength > 1000)
-                                        {
-                                            myhero.Strength = 1000;
-                                        }
-                                        myhero.AttackDamage = (myhero.Strength * 7) / 2;
-                                        myhero.Intelligence = ((myhero.Intelligence * 4) / 3) + 10;
-                                        if (myhero.Intelligence > 775)
-                                        {
-                                            myhero.Intelligence = 775;
-                                        }
-                                        Console.WriteLine("Experience until next level: {0}", myhero.XpToLevel);
+                                        myhero.MaxHealth = 100000;
                                     }
-                                    while (myhero.CurrentXp >= myhero.XpThresh);
+                                    myhero.MaxMagic = (myhero.MaxMagic * 4) / 3;
+                                    if (myhero.MaxMagic > 15000)
+                                    {
+                                        myhero.MaxMagic = 15000;
+                                    }
+                                    myhero.Defense = ((myhero.Defense * 7) / 3) + 10;
+                                    if (myhero.Defense > 1300)
+                                    {
+                                        myhero.Defense = 1300;
+                                    }
+                                    myhero.Agility = ((myhero.Agility * 4) / 3) + 15;
+                                    if (myhero.Agility > 950)
+                                    {
+                                        myhero.Agility = 950;
+                                    }
+                                    myhero.CurrentXp -= myhero.XpThresh;
+                                    if (myhero.CurrentXp < 0)
+                                    {
+                                        myhero.CurrentXp = 0;
+                                    }
+                                    myhero.XpThresh = (myhero.Level * 500) * 1.5;
+                                    myhero.XpToLevel = myhero.XpThresh - myhero.CurrentXp;
+                                    myhero.CurrentHealth = myhero.MaxHealth;
+                                    myhero.CurrentMagic = myhero.MaxMagic;
+                                    myhero.Strength = ((myhero.Strength * 7) / 3) + 20;
+                                    if (myhero.Strength > 1000)
+                                    {
+                                        myhero.Strength = 1000;
+                                    }
+                                    myhero.AttackDamage = (myhero.Strength * 7) / 2;
+                                    myhero.Intelligence = ((myhero.Intelligence * 4) / 3) + 10;
+                                    if (myhero.Intelligence > 775)
+                                    {
+                                        myhero.Intelligence = 775;
+                                    }
+                                    Console.WriteLine("Experience until next level: {0}", myhero.XpToLevel);
                                 }
                                 Console.WriteLine("Press enter to continue....");
                                 Console.ReadLine();
@@ -285,9 +246,6 @@ _________________________");
                         break;
 
                     case "Q":
-
-                    case "q":
-
                         Console.WriteLine("Goodbye {0}", myhero.Identifier);
                         Console.WriteLine();
                         Console.WriteLine("Press enter to continue....");
@@ -296,7 +254,7 @@ _________________________");
                 }
             }
 
-            while (answer != "Q" && answer != "q");
+            while (answer != "Q");
         }
 
         private static void Main(string[] args)
