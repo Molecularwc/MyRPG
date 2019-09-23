@@ -37,7 +37,7 @@ namespace MyRPG
             hero.OldMaxHp = 0;
             hero.StatIncrease = false;
 
-            while (hero.Identifier == null || hero.Identifier == "" ||
+            while (string.IsNullOrEmpty(hero.Identifier) ||
                 hero.Identifier == " ")
             {
                 Console.WriteLine("What is your Hero's name?");
