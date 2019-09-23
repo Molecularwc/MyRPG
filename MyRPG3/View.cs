@@ -25,7 +25,7 @@ Magic: {14}/{15}
 Potions: {16}
 Items:", hero.Identifier, hero.CurrentHealth, hero.MaxHealth, hero.Strength, hero.Agility, hero.Intelligence,
          hero.Defense, hero.AttackDamage, $"{hero.CurrentXp:F0}", hero.XpThresh, hero.XpToLevel, $"{hero.Experience:F0}", $"{hero.Gold:F0}", hero.Level, hero.CurrentMagic, hero.MaxMagic, hero.PotionQty);
-            foreach (string item in hero.Items)
+            foreach (var item in hero.Items)
             {
                 Console.WriteLine();
                 Console.WriteLine(item);
