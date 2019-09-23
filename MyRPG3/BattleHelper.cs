@@ -298,7 +298,7 @@ Please choose a spell:
             Potions potion;
             potion = ProcessPotionsChoice(potionChoice, attacker);
             var pot = potion.PotionUse(attacker);
-            if (potion.restoreHP == true)
+            if (potion.RestoreHp == true)
             {
                 attacker.NewHp = attacker.CurrentHealth + pot;
                 attacker.OldHp = attacker.CurrentHealth;
@@ -308,14 +308,14 @@ Please choose a spell:
                     attacker.NewHp = attacker.MaxHealth;
                 }
             }
-            else if (potion.increaseMaxHP == true && potion._isUsed == true)
+            else if (potion.IncreaseMaxHp == true && potion.IsUsed == true)
             {
                 attacker.NewMaxHp = attacker.MaxHealth + pot;
                 attacker.OldMaxHp = attacker.MaxHealth;
                 attacker.MaxHealth = attacker.NewMaxHp;
                 attacker.StatIncrease = true;
             }
-            if (potion.invincibility == true && potion._isUsed == true)
+            if (potion.Invincibility == true && potion.IsUsed == true)
             {
                 attacker.DefenseMod = true;
             }
@@ -362,17 +362,17 @@ Increase (M)ax HP
             {
                 case "I":
                     Invincibility invincibility = new Invincibility();
-                    invincibility._isUsed = true;
+                    invincibility.IsUsed = true;
                     return invincibility;
 
                 case "M":
                     IncreaseMaxHp increaseMaxHP = new IncreaseMaxHp();
-                    increaseMaxHP._isUsed = true;
+                    increaseMaxHP.IsUsed = true;
                     return increaseMaxHP;
 
                 case "R":
                     RestoreHP restoreHP = new RestoreHP();
-                    restoreHP._isUsed = true;
+                    restoreHP.IsUsed = true;
                     return restoreHP;
 
                 default:
