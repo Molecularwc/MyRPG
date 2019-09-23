@@ -33,18 +33,18 @@ namespace MyRPG
         public override string Ai()
         {
             string choice;
-            int ainumberchoice;
+            int aiNumberChoice;
             rand = new Random();
-            ainumberchoice = rand.Next(1, 100);
-            if (ainumberchoice < AiAttack)
+            aiNumberChoice = rand.Next(1, 100);
+            if (aiNumberChoice < AiAttack)
             {
                 choice = "A";
             }
-            else if (ainumberchoice <= AiDefend && ainumberchoice >= AiAttack)
+            else if (aiNumberChoice <= AiDefend && aiNumberChoice >= AiAttack)
             {
                 choice = "D";
             }
-            else if (ainumberchoice < AiSpell && ainumberchoice > AiDefend)
+            else if (aiNumberChoice < AiSpell && aiNumberChoice > AiDefend)
             {
                 choice = "S";
             }
