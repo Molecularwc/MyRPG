@@ -9,15 +9,15 @@ namespace MyRPG
     /// </summary>
     internal class Store
     {
-        private const string armor = "Armor";
-        private const string battleaxe = "Battle Axe";
-        private const string cloak = "Cloak";
-        private const string helmet = "Helmet";
-        private const string mace = "Mace";
-        private const string paladinshield = "Paladin Shield";
-        private const string potion = "Potion";
-        private const string sword = "Sword";
-        private string choice = "";
+        private const string Armor = "Armor";
+        private const string Battleaxe = "Battle Axe";
+        private const string Cloak = "Cloak";
+        private const string Helmet = "Helmet";
+        private const string Mace = "Mace";
+        private const string PaladinShield = "Paladin Shield";
+        private const string Potion = "Potion";
+        private const string Sword = "Sword";
+        private string _choice = "";
 
         public Store(Hero hero)
         {
@@ -31,7 +31,7 @@ namespace MyRPG
         {
             do
             {
-                bool checkitem = false;
+                var checkItem = false;
                 Console.WriteLine("What would you like to buy?");
                 Console.Write(@"
                     (S)word:           100 gold +5 Attack
@@ -45,18 +45,17 @@ namespace MyRPG
                     (D)one:
                     ");
                 Console.WriteLine();
-                choice = Console.ReadLine();
-                switch (choice)
+                _choice = Console.ReadLine();
+                switch (_choice.ToUpper())
                 {
                     case "S":
-                    case "s":
-                        checkitem = hero.CheckItems(sword);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(Sword);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 100)
                             {
                                 hero.Gold -= 100;
-                                hero.Items.Add(sword);
+                                hero.Items.Add(Sword);
                                 hero.AttackDamage += 5;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -73,14 +72,13 @@ namespace MyRPG
                         break;
 
                     case "H":
-                    case "h":
-                        checkitem = hero.CheckItems(helmet);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(Helmet);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 130)
                             {
                                 hero.Gold -= 130;
-                                hero.Items.Add(helmet);
+                                hero.Items.Add(Helmet);
                                 hero.Defense += 10;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -97,14 +95,13 @@ namespace MyRPG
                         break;
 
                     case "A":
-                    case "a":
-                        checkitem = hero.CheckItems(armor);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(Armor);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 125)
                             {
                                 hero.Gold -= 125;
-                                hero.Items.Add(armor);
+                                hero.Items.Add(Armor);
                                 hero.Defense += 15;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -121,14 +118,13 @@ namespace MyRPG
                         break;
 
                     case "M":
-                    case "m":
-                        checkitem = hero.CheckItems(mace);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(Mace);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 115)
                             {
                                 hero.Gold -= 115;
-                                hero.Items.Add(mace);
+                                hero.Items.Add(Mace);
                                 hero.AttackDamage += 8;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -145,14 +141,13 @@ namespace MyRPG
                         break;
 
                     case "B":
-                    case "b":
-                        checkitem = hero.CheckItems(battleaxe);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(Battleaxe);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 200)
                             {
                                 hero.Gold -= 200;
-                                hero.Items.Add(battleaxe);
+                                hero.Items.Add(Battleaxe);
                                 hero.AttackDamage += 10;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -169,14 +164,13 @@ namespace MyRPG
                         break;
 
                     case "P":
-                    case "p":
-                        checkitem = hero.CheckItems(paladinshield);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(PaladinShield);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 200)
                             {
                                 hero.Gold -= 200;
-                                hero.Items.Add(paladinshield);
+                                hero.Items.Add(PaladinShield);
                                 hero.Defense += 15;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -192,15 +186,14 @@ namespace MyRPG
                         }
                         break;
 
-                    case "c":
                     case "C":
-                        checkitem = hero.CheckItems(cloak);
-                        if (checkitem == false)
+                        checkItem = hero.CheckItems(Cloak);
+                        if (checkItem == false)
                         {
                             if (hero.Gold >= 175)
                             {
                                 hero.Gold -= 175;
-                                hero.Items.Add(cloak);
+                                hero.Items.Add(Cloak);
                                 hero.Intelligence += 10;
                                 Console.WriteLine("Thank you {0}!", hero.Identifier);
                                 Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
@@ -217,7 +210,6 @@ namespace MyRPG
                         break;
 
                     case "O":
-                    case "o":
                         if (hero.Gold >= 350)
                         {
                             hero.Gold -= 350;
@@ -232,7 +224,6 @@ namespace MyRPG
                         break;
 
                     case "D":
-                    case "d":
                         Console.WriteLine("Goodbye {0}, and be careful out there!", hero.Identifier);
                         break;
 
@@ -241,7 +232,7 @@ namespace MyRPG
                         break;
                 }
             }
-            while (choice != "d" && choice != "D");
+            while (_choice != "D");
             Console.WriteLine("Press enter to continue....");
             Console.ReadLine();
         }
