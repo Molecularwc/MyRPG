@@ -11,13 +11,12 @@ namespace MyRPG
 
         public void Load(Hero hero)
         {
-            bool done = false;
-            string item;
+            var done = false;
             try
             {
-                string fileName = string.Format(@"c:\Program Files (x86)\SaveRPG\{0}.cdf", hero.Identifier);
-                StreamReader file = new StreamReader(fileName);
-                if (fileName == string.Format(@"c:\Program Files (x86)\SaveRPG\{0}.cdf", hero.Identifier))
+                var fileName = $@"c:\Program Files (x86)\SaveRPG\{hero.Identifier}.cdf";
+                var file = new StreamReader(fileName);
+                if (fileName == $@"c:\Program Files (x86)\SaveRPG\{hero.Identifier}.cdf")
                 {
                     hero.Identifier = file.ReadLine();
                     hero.CurrentHealth = int.Parse(file.ReadLine());
@@ -38,7 +37,7 @@ namespace MyRPG
                     hero.PotionQty = int.Parse(file.ReadLine());
                     while (done == false)
                     {
-                        item = file.ReadLine();
+                        var item = file.ReadLine();
                         if (item != null)
                         {
                             hero.Items.Add(item);
@@ -69,8 +68,8 @@ namespace MyRPG
             {
                 Directory.CreateDirectory(@"c:\Program Files (x86)\SaveRPG");
             }
-            string fileName = string.Format(@"c:\Program Files (x86)\SaveRPG\{0}.cdf", hero.Identifier);
-            StreamWriter file = new StreamWriter(fileName);
+            var fileName = $@"c:\Program Files (x86)\SaveRPG\{hero.Identifier}.cdf";
+            var file = new StreamWriter(fileName);
 
             file.WriteLine(hero.Identifier);
             file.WriteLine(hero.CurrentHealth);
@@ -89,7 +88,7 @@ namespace MyRPG
             file.WriteLine(hero.Level);
             file.WriteLine(hero.AttackDamage);
             file.WriteLine(hero.PotionQty);
-            foreach (string item in hero.Items)
+            foreach (var item in hero.Items)
             {
                 file.WriteLine(item);
             }
