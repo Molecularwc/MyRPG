@@ -6,29 +6,29 @@ namespace MyRPG
     {
         public LightningBolt()
         {
-            identifier = "LightningBolt";
-            multipleHits = true;
-            power = 15;
-            spellPwr = 0;
-            magicCost = 5;
+            Identifier = "LightningBolt";
+            MultipleHits = true;
+            Power = 15;
+            SpellPwr = 0;
+            MagicCost = 5;
         }
 
         public override int SpellCast(Character Caster)
         {
             Console.WriteLine("{0} casts LightningBolt,", Caster.Identifier);
-            Caster.CurrentMagic -= magicCost;
-            spellPwr = (power * Caster.Intelligence) / 3;
+            Caster.CurrentMagic -= MagicCost;
+            SpellPwr = (Power * Caster.Intelligence) / 3;
             if (Caster.CurrentMagic < 0)
             {
-                Caster.CurrentMagic += magicCost;
+                Caster.CurrentMagic += MagicCost;
                 Console.WriteLine("however {0} doesn't have enough magic points", Caster.Identifier);
-                power = 0;
+                Power = 0;
             }
             else if (Caster.CurrentMagic >= 0)
             {
-                Console.WriteLine("and hits for {0}hp of electrical damage", spellPwr);
+                Console.WriteLine("and hits for {0}hp of electrical damage", SpellPwr);
             }
-            return spellPwr;
+            return SpellPwr;
         }
     }
 }
