@@ -199,7 +199,7 @@ _____________________");
             Spell spell;
             spell = ProcessSpellChoice(spellChoice, attacker);
             var spellpower = spell.SpellCast(attacker);
-            if (spell.isOnSelf == true)
+            if (spell.IsOnSelf == true)
             {
                 attacker.CurrentHealth += spellpower;
                 if (attacker.CurrentHealth > attacker.MaxHealth)
@@ -207,12 +207,12 @@ _____________________");
                     attacker.CurrentHealth = attacker.MaxHealth;
                 }
             }
-            else if (spell.multipleHits == true)
+            else if (spell.MultipleHits == true)
             {
                 defender.CurrentHealth -= spellpower;
                 //To Do: make it hit multiple enemies
             }
-            else if (spell.singleTarget == true)
+            else if (spell.SingleTarget == true)
             {
                 defender.CurrentHealth -= spellpower;
             }
