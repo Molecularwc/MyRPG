@@ -1,34 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyRPG
+﻿namespace MyRPG
 {
     internal class Potions
     {
-        public bool _isUsed;
-        public bool defenseMod;
-        public bool invincibility, increaseMaxHP, restoreHP;
-        public bool isOnSelf;
-        public int potency;
-        public int potionCost;
-        public string potionIdent;
+        public bool IsUsed;
+        public bool DefenseMod;
+        public bool Invincibility, IncreaseMaxHp, RestoreHp;
+        public bool IsOnSelf;
+        public int Potency;
+        public int PotionCost;
+        public string PotionIdent;
 
         public Potions()
         {
-            invincibility = false;
-            increaseMaxHP = false;
-            restoreHP = false;
-            isOnSelf = false;
-            defenseMod = false;
-            _isUsed = false;
+            Invincibility = false;
+            IncreaseMaxHp = false;
+            RestoreHp = false;
+            IsOnSelf = false;
+            DefenseMod = false;
+            IsUsed = false;
         }
 
         public virtual int PotionUse(Character user)
         {
-            return potency;
+            return Potency;
         }
     }
 }
