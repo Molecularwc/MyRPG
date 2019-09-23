@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyRPG3
+namespace MyRPG
 {
     public partial class Slime_Loot_Admin : Form
     {

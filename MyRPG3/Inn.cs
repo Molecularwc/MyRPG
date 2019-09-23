@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyRPG3
+namespace MyRPG
 {
     public class Inn
     {

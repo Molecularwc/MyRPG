@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace MyRPG3 {
+namespace MyRPG {
     
     
     /// <summary>
@@ -2067,7 +2067,7 @@ namespace MyRPG3 {
         }
     }
 }
-namespace MyRPG3.lootTableAdapters {
+namespace MyRPG.lootTableAdapters {
     
     
     /// <summary>
@@ -2248,7 +2248,7 @@ SELECT b_item_id, item_name, item_level, b_item_drop_rate, item_rarity, item_art
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::MyRPG3.Properties.Settings.Default.Loot_DropsConnectionString;
+            this._connection.ConnectionString = global::MyRPG.Properties.Settings.Default.Loot_DropsConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2700,7 +2700,7 @@ SELECT m_item_id, item_name, item_level, m_item_drop_rate, m_item_drop_chance, i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::MyRPG3.Properties.Settings.Default.Loot_DropsConnectionString;
+            this._connection.ConnectionString = global::MyRPG.Properties.Settings.Default.Loot_DropsConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3180,7 +3180,7 @@ SELECT s_item_id, item_name, item_level, s_item_drop_rate, s_item_drop_chance, i
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::MyRPG3.Properties.Settings.Default.Loot_DropsConnectionString;
+            this._connection.ConnectionString = global::MyRPG.Properties.Settings.Default.Loot_DropsConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

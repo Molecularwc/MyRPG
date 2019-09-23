@@ -1,4 +1,4 @@
-﻿namespace MyRPG3
+﻿namespace MyRPG
 {
     internal class Spell
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyRPG3
+namespace MyRPG
 {
     public partial class Mage_Loot_Admin : Form
     {

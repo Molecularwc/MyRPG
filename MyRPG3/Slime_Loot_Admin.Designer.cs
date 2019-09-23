@@ -1,4 +1,6 @@
-﻿namespace MyRPG3
+﻿using MyRPG.lootTableAdapters;
+
+namespace MyRPG
 {
     partial class Slime_Loot_Admin
     {
@@ -40,8 +42,8 @@
             this.sitemdropchanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemrarityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slimelootdropsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.loot = new MyRPG3.loot();
-            this.slime_loot_dropsTableAdapter = new MyRPG3.lootTableAdapters.slime_loot_dropsTableAdapter();
+            this.loot = new loot();
+            this.slime_loot_dropsTableAdapter = new slime_loot_dropsTableAdapter();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -55,7 +57,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.tableAdapterManager1 = new MyRPG3.lootTableAdapters.TableAdapterManager();
+            this.tableAdapterManager1 = new TableAdapterManager();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -294,7 +296,7 @@
             this.tableAdapterManager1.barbarian_loot_dropsTableAdapter = null;
             this.tableAdapterManager1.mage_loot_dropsTableAdapter = null;
             this.tableAdapterManager1.slime_loot_dropsTableAdapter = this.slime_loot_dropsTableAdapter;
-            this.tableAdapterManager1.UpdateOrder = MyRPG3.lootTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // comboBox1
             // 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class Loot_Handler
     {

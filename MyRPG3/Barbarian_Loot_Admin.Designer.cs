@@ -1,4 +1,6 @@
-﻿namespace MyRPG3
+﻿using MyRPG.lootTableAdapters;
+
+namespace MyRPG
 {
     partial class Barbarian_Loot_Admin
     {
@@ -38,8 +40,8 @@
             this.bitemdropchanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemrarityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barbarianlootdropsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.loot = new MyRPG3.loot();
-            this.barbarian_loot_dropsTableAdapter = new MyRPG3.lootTableAdapters.barbarian_loot_dropsTableAdapter();
+            this.loot = new loot();
+            this.barbarian_loot_dropsTableAdapter = new barbarian_loot_dropsTableAdapter();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -62,7 +64,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableAdapterManager1 = new MyRPG3.lootTableAdapters.TableAdapterManager();
+            this.tableAdapterManager1 = new TableAdapterManager();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -356,7 +358,7 @@
             this.tableAdapterManager1.barbarian_loot_dropsTableAdapter = this.barbarian_loot_dropsTableAdapter;
             this.tableAdapterManager1.mage_loot_dropsTableAdapter = null;
             this.tableAdapterManager1.slime_loot_dropsTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = MyRPG3.lootTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // label3
             // 

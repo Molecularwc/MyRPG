@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyRPG3
+namespace MyRPG
 {
     internal class RestoreHP : Potions
     {
