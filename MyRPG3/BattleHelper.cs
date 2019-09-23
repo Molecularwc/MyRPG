@@ -22,14 +22,7 @@ namespace MyRPG
         public static bool CheckHealth(int health)
         {
             bool alive;
-            if (health > 0)
-            {
-                alive = true;
-            }
-            else
-            {
-                alive = false;
-            }
+            alive = health > 0;
             return alive;
         }
 
@@ -60,15 +53,15 @@ namespace MyRPG
                 min = 1;
             }
             damage = rand.Next(min, max);
-            if (attacker.IncreaseAttack == true)
+            if (attacker.IncreaseAttack)
             {
                 damage = (int)(damage * 3) / 2;
             }
-            if (defender.Defending == true)
+            if (defender.Defending)
             {
                 damage = damage / 2;
             }
-            if (defender.DefenseMod == true)
+            if (defender.DefenseMod)
             {
                 damage = damage / 10;
             }
@@ -85,12 +78,13 @@ namespace MyRPG
         /// <param name="choice">the attackers choice</param>
         /// <param name="attacker">The active character</param>
         /// <param name="defender">The target character the attacker is attacking</param>
-        public static void ProcessChoice(string choice, Character attacker, Character defender, string spellchoice, string potionchoice)
+        /// <param name="spellChoice">The chosen spell</param>
+        /// <param name="potionChoice">The chosen potion</param>
+        public static void ProcessChoice(string choice, Character attacker, Character defender, string spellChoice, string potionChoice)
         {
-            switch (choice)
+            switch (choice.ToUpper())
             {
                 case "A":
-                case "a":
                     Console.WriteLine();
                     Console.WriteLine("{0} attacks!", attacker.Identifier);
                     DealDamage(attacker, defender);
@@ -100,13 +94,11 @@ namespace MyRPG
                     break;
 
                 case "D":
-                case "d":
                     Console.WriteLine();
                     Console.WriteLine("{0} defends!", attacker.Identifier);
                     break;
 
                 case "F":
-                case "f":
                     Console.WriteLine();
                     Console.WriteLine("{0} flees!", attacker.Identifier);
                     attacker.Fled = true;
@@ -114,13 +106,11 @@ namespace MyRPG
                     break;
 
                 case "S":
-                case "s":
                     Console.WriteLine();
-                    CastSpell(attacker, defender, spellchoice);
+                    CastSpell(attacker, defender, spellChoice);
                     break;
 
                 case "P":
-                case "p":
                     Console.WriteLine();
                     break;
 
@@ -129,7 +119,7 @@ namespace MyRPG
                     Console.WriteLine();
                     choice = PrintChoice();
                     Console.WriteLine();
-                    ProcessChoice(choice, attacker, defender, spellchoice, potionchoice);
+                    ProcessChoice(choice, attacker, defender, spellChoice, potionChoice);
                     break;
             }
         }
@@ -142,7 +132,6 @@ namespace MyRPG
         /// This method is used to print the status of both characters
         /// </summary>
         /// <param name="hero">Our hero character</param>
-        /// <param name="monster">the monster character</param>
         public static void PrintStatus(Character hero)
         {
             Console.Write(@"    HP/MaxHP   MP/MaxMP     Level
@@ -190,22 +179,9 @@ _____________________");
         /// <param name="attacker">input the active character we are checking</param>
         public static void CheckDefense(string choice, Character attacker)
         {
-            if (attacker.Defending == true)
-            {
-                attacker.IncreaseAttack = true;
-            }
-            else
-            {
-                attacker.IncreaseAttack = false;
-            }
-            if (choice == "D" || choice == "d")
-            {
-                attacker.Defending = true;
-            }
-            else
-            {
-                attacker.Defending = false;
-            }
+            attacker.IncreaseAttack = attacker.Defending == true;
+
+            attacker.Defending = choice == "D";
         }
 
         #endregion CheckDefense
@@ -217,12 +193,12 @@ _____________________");
         /// </summary>
         /// <param name="attacker">The attacker</param>
         /// <param name="defender">The defender</param>
-        /// <param name="spell">The spell they've chosen to cast</param>
-        public static void CastSpell(Character attacker, Character defender, string spellchoice)
+        /// <param name="spellChoice">The spell they've chosen to cast</param>
+        public static void CastSpell(Character attacker, Character defender, string spellChoice)
         {
             Spell spell;
-            spell = ProcessSpellChoice(spellchoice, attacker);
-            int spellpower = spell.SpellCast(attacker);
+            spell = ProcessSpellChoice(spellChoice, attacker);
+            var spellpower = spell.SpellCast(attacker);
             if (spell.isOnSelf == true)
             {
                 attacker.CurrentHealth += spellpower;
@@ -276,30 +252,25 @@ Please choose a spell:
         /// </summary>
         /// <param name="spellchoice">The spell choice</param>
         /// <param name="attacker">the attacker</param>
-        /// <param name="defender">the defender</param>
         public static Spell ProcessSpellChoice(string spellchoice, Character attacker)
         {
             Spell spell;
-            switch (spellchoice)
+            switch (spellchoice.ToUpper())
             {
                 case "H":
-                case "h":
-                    Heal heal = new Heal();
+                    var heal = new Heal();
                     return heal;
 
                 case "F":
-                case "f":
-                    Fireball fireball = new Fireball();
+                    var fireball = new Fireball();
                     return fireball;
 
                 case "I":
-                case "i":
-                    Icebolt icebolt = new Icebolt();
+                    var icebolt = new Icebolt();
                     return icebolt;
 
                 case "L":
-                case "l":
-                    LightningBolt lightningbolt = new LightningBolt();
+                    var lightningbolt = new LightningBolt();
                     return lightningbolt;
 
                 default:
@@ -321,12 +292,12 @@ Please choose a spell:
         /// </summary>
         /// <param name="attacker">The attacker</param>
         /// <param name="defender">The defender</param>
-        /// <param name="potion">The potion they've chosen to use</param>
-        public static void UsePotion(Character attacker, Character defender, string potionchoice)
+        /// <param name="potionChoice">The potion they've chosen to use</param>
+        public static void UsePotion(Character attacker, Character defender, string potionChoice)
         {
             Potions potion;
-            potion = ProcessPotionsChoice(potionchoice, attacker);
-            int pot = potion.PotionUse(attacker);
+            potion = ProcessPotionsChoice(potionChoice, attacker);
+            var pot = potion.PotionUse(attacker);
             if (potion.restoreHP == true)
             {
                 attacker.NewHp = attacker.CurrentHealth + pot;
@@ -387,22 +358,19 @@ Increase (M)ax HP
         public static Potions ProcessPotionsChoice(string potionchoice, Character attacker)
         {
             Potions potions;
-            switch (potionchoice)
+            switch (potionchoice.ToUpper())
             {
                 case "I":
-                case "i":
                     Invincibility invincibility = new Invincibility();
                     invincibility._isUsed = true;
                     return invincibility;
 
                 case "M":
-                case "m":
                     IncreaseMaxHp increaseMaxHP = new IncreaseMaxHp();
                     increaseMaxHP._isUsed = true;
                     return increaseMaxHP;
 
                 case "R":
-                case "r":
                     RestoreHP restoreHP = new RestoreHP();
                     restoreHP._isUsed = true;
                     return restoreHP;
@@ -427,8 +395,7 @@ Increase (M)ax HP
         /// <param name="Monsters"></param>
         public static bool CheckMonsters(List<Character> Monsters)
         {
-            Hero hero = new Hero();
-            bool foundone = false;
+            var foundone = false;
             foreach (Character monster in Monsters)
             {
                 if (monster.IsAlive)
@@ -460,31 +427,17 @@ Increase (M)ax HP
         {
             Console.WriteLine("Please choose the monster to attack");
             string choice;
-            int x = 0;
+            var x = 0;
             foreach (Character monster in Monster)
             {
-                Hero myhero = new Hero();
                 x++;
                 if (monster.IsAlive)
                 {
                     Console.WriteLine("{0}: {1}", x, monster.Identifier);
                 }
-                //if (myhero.Level >= monster.Level)
-                //{
-                //    monster.Level = myhero.Level + 1;
-                //    monster.MaxHealth = monster.MaxHealth * (myhero.Level / 2);
-                //    monster.CurrentHealth = monster.MaxHealth;
-                //    monster.Strength = monster.Strength * (myhero.Level / 2);
-                //    monster.Agility = monster.Agility + 4;
-                //    monster.Defense = monster.Defense + 4;
-                //    monster.Experience = monster.Experience * myhero.Level;
-                //    monster.Gold = monster.Gold * myhero.Level;
-                //}
             }
             Console.WriteLine();
             choice = Console.ReadLine();
-            //below is an example of exception
-            //handling.
             try//try this stuff
             {
                 x = int.Parse(choice);
