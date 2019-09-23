@@ -52,11 +52,11 @@ namespace MyRPG
                             monster.Gold = (monster.Gold * (hero.Level * 2)) * 1.5;
                         }
                         BattleHelper.PrintStatus(monster);
-                        if (rnds >= 3 && hero.DefenseMod == true)
+                        if (rnds >= 3 && hero.DefenseMod)
                         {
                             hero.DefenseMod = false;
                         }
-                        if (rnds >= 4 && hero.StatIncrease == true)
+                        if (rnds >= 4 && hero.StatIncrease)
                         {
                             hero.CurrentHealth = hero.OldHp;
                             hero.MaxHealth = hero.OldMaxHp;
