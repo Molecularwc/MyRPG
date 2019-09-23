@@ -397,7 +397,7 @@ Increase (M)ax HP
 
                 case "M":
                 case "m":
-                    IncreaseMaxHP increaseMaxHP = new IncreaseMaxHP();
+                    IncreaseMaxHp increaseMaxHP = new IncreaseMaxHp();
                     increaseMaxHP._isUsed = true;
                     return increaseMaxHP;
 

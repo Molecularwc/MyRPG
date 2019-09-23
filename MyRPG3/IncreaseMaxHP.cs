@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyRPG
 {
-    internal class IncreaseMaxHP : Potions
+    internal class IncreaseMaxHp : Potions
     {
-        public IncreaseMaxHP()
+        public IncreaseMaxHp()
         {
             potionIdent = "IncreaseMaxHP";
             increaseMaxHP = true;
