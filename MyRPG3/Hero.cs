@@ -49,14 +49,7 @@ namespace MyRPG
 
         public bool CheckItems(string item)
         {
-            if (Items.Contains(item))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Items.Contains(item);
         }
     }
 }
