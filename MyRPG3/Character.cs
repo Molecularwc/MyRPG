@@ -34,19 +34,19 @@ namespace MyRPG
 
         public virtual string Ai()
         {
-            string choice = "";
+            var choice = "";
             return choice;
         }
 
         public virtual string PotionAi()
         {
-            string choice = "";
+            var choice = "";
             return choice;
         }
 
         public virtual string SpellAi()
         {
-            string choice = "";
+            var choice = "";
             return choice;
         }
     }
