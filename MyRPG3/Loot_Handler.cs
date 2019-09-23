@@ -2,17 +2,17 @@
 
 namespace MyRPG
 {
-    internal class Loot_Handler
+    internal class LootHandler
     {
         public const string gold = "Gold";
         private readonly Dictionary<string, int> Loot;
 
-        public Loot_Handler()
+        public LootHandler()
         {
             Loot = new Dictionary<string, int>();
         }
 
-        public static void Initialize(Loot_Handler lewt)
+        public static void Initialize(LootHandler lewt)
         {
             lewt.Loot.Add(gold, 10);
         }
