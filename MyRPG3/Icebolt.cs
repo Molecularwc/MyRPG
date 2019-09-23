@@ -6,29 +6,29 @@ namespace MyRPG
     {
         public Icebolt()
         {
-            identifier = "Icebolt";
-            power = 12;
-            spellPwr = 0;
-            singleTarget = true;
-            magicCost = 2;
+            Identifier = "Icebolt";
+            Power = 12;
+            SpellPwr = 0;
+            SingleTarget = true;
+            MagicCost = 2;
         }
 
         public override int SpellCast(Character Caster)
         {
             Console.WriteLine("{0} casts Icebolt,", Caster.Identifier);
-            Caster.CurrentMagic -= magicCost;
-            spellPwr = (power * Caster.Intelligence) / 3;
+            Caster.CurrentMagic -= MagicCost;
+            SpellPwr = (Power * Caster.Intelligence) / 3;
             if (Caster.CurrentMagic < 0)
             {
-                Caster.CurrentMagic += magicCost;
+                Caster.CurrentMagic += MagicCost;
                 Console.WriteLine("however {0} doesn't have enough magic points", Caster.Identifier);
-                power = 0;
+                Power = 0;
             }
             else if (Caster.CurrentMagic >= 0)
             {
-                Console.WriteLine("and hits for {0}hp of ice damage", spellPwr);
+                Console.WriteLine("and hits for {0}hp of ice damage", SpellPwr);
             }
-            return spellPwr;
+            return SpellPwr;
         }
     }
 }
