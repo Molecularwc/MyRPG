@@ -16,7 +16,7 @@ namespace MyRPG
         public override int PotionUse(Character user)
         {
             Console.WriteLine("{0} uses a Increase Max HP potion,", user.Identifier);
-            user.PotionQty = user.PotionQty - PotionCost;
+            user.PotionQty -= PotionCost;
             Potency = user.MaxHealth * 10;
             if (user.PotionQty < 0)
             {

@@ -3,9 +3,9 @@
 namespace MyRPG
 {
     /// <summary>
-    /// This is a very simple store with just a few items. We could alternatively make each item it's
-    /// own class as opposed to a string The const keyword indicates that this string is a constant
-    /// and will not change
+    /// This is a very simple store with just a few items. We could alternatively make each item
+    /// it's own class as opposed to a string The const keyword indicates that this string is a
+    /// constant and will not change
     /// </summary>
     internal class Store
     {
@@ -15,7 +15,6 @@ namespace MyRPG
         private const string Helmet = "Helmet";
         private const string Mace = "Mace";
         private const string PaladinShield = "Paladin Shield";
-        private const string Potion = "Potion";
         private const string Sword = "Sword";
         private string _choice = "";
 
@@ -31,7 +30,6 @@ namespace MyRPG
         {
             do
             {
-                var checkItem = false;
                 Console.WriteLine("What would you like to buy?");
                 Console.Write(@"
                     (S)word:           100 gold +5 Attack
@@ -46,7 +44,9 @@ namespace MyRPG
                     ");
                 Console.WriteLine();
                 _choice = Console.ReadLine();
-                switch (_choice.ToUpper())
+                string v = _choice.ToUpper();
+                bool checkItem;
+                switch (v)
                 {
                     case "S":
                         checkItem = hero.CheckItems(Sword);

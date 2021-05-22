@@ -17,7 +17,7 @@ namespace MyRPG
         public override int PotionUse(Character User)
         {
             Console.WriteLine("{0} uses an invincibility potion,", User.Identifier);
-            User.PotionQty = User.PotionQty - PotionCost;
+            User.PotionQty -= PotionCost;
             Potency = User.Defense * 10;
             if (User.PotionQty < 0)
             {

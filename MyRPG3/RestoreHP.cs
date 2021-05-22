@@ -16,7 +16,7 @@ namespace MyRPG
         public override int PotionUse(Character User)
         {
             Console.WriteLine("{0} uses a Restore HP potion,", User.Identifier);
-            User.PotionQty = User.PotionQty - PotionCost;
+            User.PotionQty -= PotionCost;
             Potency = User.CurrentHealth * 10;
             if (User.PotionQty < 0)
             {

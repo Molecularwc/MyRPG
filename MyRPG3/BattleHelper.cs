@@ -59,11 +59,11 @@ namespace MyRPG
             }
             if (defender.Defending)
             {
-                damage = damage / 2;
+                damage /= 2;
             }
             if (defender.DefenseMod)
             {
-                damage = damage / 10;
+                damage /= 10;
             }
             return damage;
         }
@@ -172,8 +172,8 @@ _____________________");
         #region CheckDefense
 
         /// <summary>
-        /// This method should be called for each active character. This sets the bools defending and
-        /// increase attack for the character. This method should be called prior to any processchoice.
+        /// This method should be called for each active character. This sets the bools defending
+        /// and increase attack for the character. This method should be called prior to any processchoice.
         /// </summary>
         /// <param name="choice">input the string choice to check for defense</param>
         /// <param name="attacker">input the active character we are checking</param>
@@ -358,21 +358,28 @@ Increase (M)ax HP
         public static Potions ProcessPotionsChoice(string potionchoice, Character attacker)
         {
             Potions potions;
-            switch (potionchoice.ToUpper())
+            string v = potionchoice.ToUpper();
+            switch (v)
             {
                 case "I":
-                    Invincibility invincibility = new Invincibility();
-                    invincibility.IsUsed = true;
+                    Invincibility invincibility = new Invincibility
+                    {
+                        IsUsed = true
+                    };
                     return invincibility;
 
                 case "M":
-                    IncreaseMaxHp increaseMaxHP = new IncreaseMaxHp();
-                    increaseMaxHP.IsUsed = true;
+                    IncreaseMaxHp increaseMaxHP = new IncreaseMaxHp
+                    {
+                        IsUsed = true
+                    };
                     return increaseMaxHP;
 
                 case "R":
-                    RestoreHP restoreHP = new RestoreHP();
-                    restoreHP.IsUsed = true;
+                    RestoreHP restoreHP = new RestoreHP
+                    {
+                        IsUsed = true
+                    };
                     return restoreHP;
 
                 default:

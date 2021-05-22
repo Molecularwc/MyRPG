@@ -8,7 +8,6 @@ namespace MyRPG
         private static void BasicGameLoop()
         {
             string answer;
-            Battle battle;
             List<Character> Monster;
             DataHandler data = new DataHandler();
             Hero myhero;
@@ -50,8 +49,8 @@ F,S,I,V,L,A, or Q?");
                 answer = Console.ReadLine();
 
                 Console.WriteLine();
-
-                switch (answer.ToUpper())
+                string v = answer.ToUpper();
+                switch (v)
                 {
                     case "L":
                         data.Load(myhero);
@@ -64,7 +63,7 @@ F,S,I,V,L,A, or Q?");
                         break;
 
                     case "S":
-                        var store = new Store(myhero);
+                        _ = new Store(myhero);
 
                         break;
 
@@ -79,8 +78,7 @@ F,S,I,V,L,A, or Q?");
                         break;
 
                     case "F":
-                        var done = "";
-
+                        string done;
                         do
                         {
                             Console.Write(@"
@@ -99,7 +97,8 @@ _________________________");
 
                             var choice = Console.ReadLine();
 
-                            switch (choice)
+                            string b = choice.ToUpper();
+                            switch (b)
                             {
                                 case "S":
                                     Monster.Add(new Slime());
@@ -127,7 +126,7 @@ _________________________");
 
                         while (done == "Y" || done == "y");
 
-                        battle = new Battle(myhero, Monster);
+                        _ = new Battle(myhero, Monster);
                         if (myhero.CurrentHealth <= 0)
                         {
                             Console.WriteLine("Your game is over!");
@@ -176,7 +175,7 @@ _________________________");
                                 while (myhero.CurrentXp >= myhero.XpThresh)
                                 {
                                     Console.WriteLine("{0} is ready for the next level!", myhero.Identifier);
-                                    myhero.Level = myhero.Level + 1;
+                                    myhero.Level++;
                                     myhero.MaxHealth = (myhero.MaxHealth * 4) / 3;
                                     if (myhero.MaxHealth > 100000)
                                     {

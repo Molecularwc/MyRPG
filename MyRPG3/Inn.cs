@@ -10,10 +10,10 @@ namespace MyRPG
         /// <param name="hero">Our current hero</param>
         public static void Sleep(Hero hero)
         {
-            var answer = "";
             Console.Clear();
             Console.WriteLine("Hello and welcome to the Inn, it's 8 gold to stay");
             Console.WriteLine("Gold Balance: {0}", $"{hero.Gold:F0}");
+            string answer;
             do
             {
                 Console.WriteLine("What can I do for you?");
@@ -23,9 +23,10 @@ namespace MyRPG
 ");
                 answer = Console.ReadLine();
                 Console.WriteLine();
-                switch (answer.ToUpper())
+                string v = answer.ToLower();
+                switch (v)
                 {
-                    case "R":
+                    case "r":
                         if (hero.Gold >= 8)
                         {
                             hero.Gold -= 8;
@@ -40,7 +41,7 @@ namespace MyRPG
                         }
                         break;
 
-                    case "D":
+                    case "d":
                         Console.WriteLine("Be careful out there!");
                         break;
 
@@ -49,7 +50,7 @@ namespace MyRPG
                         break;
                 }
             }
-            while (answer != "D");
+            while (answer != "d");
             Console.WriteLine("Press enter to continue......");
             Console.Clear();
         }
