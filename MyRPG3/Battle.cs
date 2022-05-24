@@ -36,7 +36,7 @@ namespace MyRPG
                 {
                     if (monster.IsAlive)
                     {
-                        if (hero.Level > monster.Level)
+                        if (hero.Level >= monster.Level)
                         {
                             monster.Level = hero.Level + 1;
                             monster.MaxHealth = (monster.MaxHealth * 10) / 3;
